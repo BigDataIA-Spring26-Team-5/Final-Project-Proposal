@@ -25,6 +25,7 @@ def render():
 
     query = st.text_input("Search the enriched catalog:", placeholder="e.g., healthy breakfast cereal, organic snacks, chocolate cookies")
 
+    results = None
     if query:
         with st.spinner("Searching..."):
             results = hybrid_search(query, index, top_k=10)
@@ -49,11 +50,14 @@ def render():
                 st.write(f"{r['rank']}. **{r.get('name', '')[:40]}** ({r.get('brand', '')[:20]})")
                 st.caption(f"RRF Score: {r['score']:.6f} | {r.get('category', '')}")
 
-        st.divider()
+    st.divider()
 
-        # Section 2: AutoEval (LLM-as-Judge)
-        st.subheader("2. AutoEval (LLM-as-Judge)")
+    # Section 2: AutoEval (LLM-as-Judge)
+    st.subheader("2. AutoEval (LLM-as-Judge)")
 
+    if not results:
+        st.info("Run a search above to enable AutoEval.")
+    else:
         if st.button("Rate search results with LLM"):
             from utils.llm import call_llm_json
 

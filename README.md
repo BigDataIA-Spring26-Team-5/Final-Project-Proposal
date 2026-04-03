@@ -1,21 +1,22 @@
 # Final Project Proposal
 ## DAMG 7245: Big Data and Intelligent Analytics
-- **CodeLabs** : https://codelabs-preview.appspot.com/?file_id=1LU7EuVDdBgW_h1k9k5esTxJd9oTW9CDTLo90mMjCWiE#0
+
+| Resource | Link |
+|---|---|
+| **CodeLabs** | [View Document](https://codelabs-preview.appspot.com/?file_id=1LU7EuVDdBgW_h1k9k5esTxJd9oTW9CDTLo90mMjCWiE#0) |
+| **Presentation Video** | [Watch Recording](https://northeastern-my.sharepoint.com/personal/ryan_aq_northeastern_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2Fryan%5Faq%5Fnortheastern%5Fedu%2FDocuments%2FRecordings%2FCall%20with%20Bhavya%20and%201%20other%2D20260403%5F160617%2DMeeting%20Recording%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea258d42b%2D22dc%2D446e%2D906f%2D28325e3f16d3&ct=1775247486820&or=Teams%2DHL&ga=1) |
+
 ### Team Members
 
-- Bhavya Likhitha Bukka
-- Deepika Vaddadi
-- Aqeel Ryan
-
-### Attestation (Required)
-
-WE ATTEST THAT WE HAVEN'T USED ANY OTHER STUDENTS' WORK IN OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT HANDBOOK.
-
-| Member | Contribution |
+| Name | Contribution |
 |---|---|
 | Bhavya Likhitha Bukka | 33.3% |
 | Deepika Vaddadi | 33.3% |
 | Aqeel Ryan | 33.3% |
+
+### Attestation
+
+WE ATTEST THAT WE HAVEN'T USED ANY OTHER STUDENTS' WORK IN OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT HANDBOOK.
  
 
 

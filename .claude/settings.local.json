@@ -5,7 +5,8 @@
       "Bash(poetry add:*)",
       "Bash(poetry install:*)",
       "Bash(poetry env:*)",
-      "Bash(mv pages:*)"
+      "Bash(mv pages:*)",
+      "Bash(poetry lock:*)"
     ]
   }
 }

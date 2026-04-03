@@ -1,0 +1,51 @@
+antecedent,consequent,support,confidence,lift
+"dairy eggs, dry goods pasta, produce, snacks","breakfast, canned goods, frozen",1.1,13.3,4.48
+"breakfast, canned goods, frozen","dairy eggs, dry goods pasta, produce, snacks",1.1,37.1,4.48
+"canned goods, dairy eggs, frozen, snacks","breakfast, dry goods pasta, produce",1.1,18.7,4.46
+"breakfast, dry goods pasta, produce","canned goods, dairy eggs, frozen, snacks",1.1,26.4,4.46
+"dairy eggs, dry goods pasta, frozen, snacks","breakfast, canned goods, produce",1.1,19.4,4.42
+"breakfast, canned goods, produce","dairy eggs, dry goods pasta, frozen, snacks",1.1,25.1,4.42
+"bakery, meat seafood, snacks","deli, frozen, pantry, produce",1.01,23.8,4.39
+"deli, frozen, pantry, produce","bakery, meat seafood, snacks",1.01,18.7,4.39
+"breakfast, canned goods","beverages, dairy eggs, dry goods pasta, produce, snacks",1.03,21.4,4.39
+"beverages, dairy eggs, dry goods pasta, produce, snacks","breakfast, canned goods",1.03,21.2,4.39
+"breakfast, canned goods, produce","beverages, dairy eggs, dry goods pasta, snacks",1.03,23.4,4.39
+"beverages, dairy eggs, dry goods pasta, snacks","breakfast, canned goods, produce",1.03,19.3,4.39
+"breakfast, canned goods","dairy eggs, dry goods pasta, frozen, produce, snacks",1.1,22.9,4.38
+"dairy eggs, dry goods pasta, frozen, produce, snacks","breakfast, canned goods",1.1,21.1,4.38
+"dairy eggs, dry goods pasta, snacks","breakfast, canned goods, frozen",1.18,13.0,4.35
+"breakfast, canned goods, frozen","dairy eggs, dry goods pasta, snacks",1.18,39.6,4.35
+"deli, frozen, pantry","bakery, meat seafood, produce, snacks",1.01,17.1,4.33
+"bakery, meat seafood, produce, snacks","deli, frozen, pantry",1.01,25.5,4.33
+"dairy eggs, deli, frozen, pantry","bakery, dry goods pasta, produce, snacks",1.03,19.7,4.33
+"bakery, dry goods pasta, produce, snacks","dairy eggs, deli, frozen, pantry",1.03,22.7,4.33
+"dairy eggs, dry goods pasta, snacks","breakfast, canned goods, frozen, produce",1.1,12.1,4.33
+"breakfast, canned goods, frozen, produce","dairy eggs, dry goods pasta, snacks",1.1,39.4,4.33
+"breakfast, canned goods, dairy eggs","dry goods pasta, frozen, produce, snacks",1.1,24.9,4.32
+"dry goods pasta, frozen, produce, snacks","breakfast, canned goods, dairy eggs",1.1,19.2,4.32
+"beverages, breakfast, canned goods, produce","dairy eggs, dry goods pasta, snacks",1.03,39.3,4.31
+"dairy eggs, dry goods pasta, snacks","beverages, breakfast, canned goods, produce",1.03,11.3,4.31
+"dairy eggs, dry goods pasta, frozen, snacks","breakfast, canned goods",1.18,20.7,4.3
+"breakfast, canned goods","dairy eggs, dry goods pasta, frozen, snacks",1.18,24.4,4.3
+"dairy eggs, dry goods pasta, produce, snacks","beverages, breakfast, canned goods",1.03,12.4,4.3
+"beverages, breakfast, canned goods","dairy eggs, dry goods pasta, produce, snacks",1.03,35.7,4.3
+"breakfast, canned goods","beverages, dairy eggs, dry goods pasta, snacks",1.1,22.9,4.29
+"beverages, dairy eggs, dry goods pasta, snacks","breakfast, canned goods",1.1,20.7,4.29
+"beverages, dry goods pasta, produce, snacks","breakfast, canned goods, dairy eggs",1.03,19.0,4.28
+"breakfast, canned goods, dairy eggs","beverages, dry goods pasta, produce, snacks",1.03,23.2,4.28
+"beverages, dairy eggs, deli, pantry","bakery, canned goods, produce, snacks",1.01,20.1,4.28
+"bakery, canned goods, produce, snacks","beverages, dairy eggs, deli, pantry",1.01,21.4,4.28
+"dry goods pasta, produce, snacks","breakfast, canned goods, dairy eggs, frozen",1.1,11.8,4.25
+"breakfast, canned goods, dairy eggs, frozen","dry goods pasta, produce, snacks",1.1,39.7,4.25
+"canned goods, dairy eggs, frozen, produce, snacks","breakfast, dry goods pasta",1.1,20.4,4.25
+"breakfast, dry goods pasta","canned goods, dairy eggs, frozen, produce, snacks",1.1,23.1,4.25
+"dairy eggs, frozen, pantry, snacks","bakery, beverages, breakfast, produce",1.14,13.6,4.24
+"bakery, beverages, breakfast, produce","dairy eggs, frozen, pantry, snacks",1.14,35.4,4.24
+"dry goods pasta, frozen, snacks","breakfast, canned goods, dairy eggs, produce",1.1,17.3,4.24
+"breakfast, canned goods, dairy eggs, produce","dry goods pasta, frozen, snacks",1.1,27.1,4.24
+"bakery, canned goods, produce, snacks","dairy eggs, deli, frozen, pantry",1.04,22.1,4.22
+"dairy eggs, deli, frozen, pantry","bakery, canned goods, produce, snacks",1.04,19.9,4.22
+"dairy eggs, deli, frozen, pantry, produce","bakery, dry goods pasta, snacks",1.03,21.1,4.21
+"bakery, dry goods pasta, snacks","dairy eggs, deli, frozen, pantry, produce",1.03,20.6,4.21
+"breakfast, dairy eggs, dry goods pasta, produce","canned goods, frozen, snacks",1.1,27.7,4.2
+"canned goods, frozen, snacks","breakfast, dairy eggs, dry goods pasta, produce",1.1,16.7,4.2

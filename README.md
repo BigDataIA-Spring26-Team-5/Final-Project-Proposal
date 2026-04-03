@@ -623,64 +623,64 @@ The platform fills 12+ skill gaps not covered by any existing team member projec
 ## Appendix
 
 ### A. System Architecture Diagram (Mermaid)
-
+ 
 ```mermaid
 graph TB
     subgraph Sources["Data Sources"]
-        Open Food Facts[Open Food Facts<br/>4M products, daily]
-        USDA[USDA FoodData<br/>454K, monthly]
-        FDA[openFDA Recalls<br/>28K, weekly]
-        OP[Open Prices<br/>240K, real-time]
-        ESCI[Amazon ESCI<br/>2.68M, static]
-        IC[Instacart<br/>37.3M rows, static]
+        OFF["Open Food Facts\n4M products, daily"]
+        USDA["USDA FoodData\n454K, monthly"]
+        FDA["openFDA Recalls\n28K, weekly"]
+        OP["Open Prices\n240K, real-time"]
+        ESCI["Amazon ESCI\n2.68M, static"]
+        IC["Instacart\n37.3M rows, static"]
     end
-
+ 
     subgraph Ingestion["Ingestion Layer"]
-        Kafka[Apache Kafka<br/>4 topics]
-        Airflow[Apache Airflow<br/>Scheduled DAGs]
-        Spark[Apache Spark<br/>Batch processing]
+        Kafka["Apache Kafka\n4 topics"]
+        Airflow["Apache Airflow\nScheduled DAGs"]
+        Spark["Apache Spark\nBatch processing"]
     end
-
+ 
     subgraph Intelligence["Intelligence Pipeline"]
-        DSPy[DSPy + Groq<br/>Attribute extraction]
-        ER[Entity Resolution<br/>rapidfuzz + ML]
-        KG[Neo4j<br/>Knowledge Graph]
-        Tax[Product Taxonomy<br/>USDA L2 + Open Food Facts L3]
-        GE[Great Expectations<br/>Validation]
-        DQ[Data Quality Scoring<br/>0-100 per product]
+        DSPy["DSPy + Groq\nAttribute extraction"]
+        ER["Entity Resolution\nrapidfuzz + ML"]
+        KG["Neo4j\nKnowledge Graph"]
+        Tax["Product Taxonomy\nUSDA L2 + OFF L3"]
+        GE["Great Expectations\nValidation"]
+        DQ["Data Quality Scoring\n0-100 per product"]
     end
-
+ 
     subgraph Observability["Observability Layer"]
-        PW[Pathway<br/>Streaming telemetry]
-        IF[Isolation Forest<br/>Anomaly detection]
-        RC[DSPy + Groq<br/>Root-cause diagnosis]
-        AL[Alert Engine<br/>Severity ranking]
+        PW["Pathway\nStreaming telemetry"]
+        IF["Isolation Forest\nAnomaly detection"]
+        RC["DSPy + Groq\nRoot-cause diagnosis"]
+        AL["Alert Engine\nSeverity ranking"]
     end
-
+ 
     subgraph Search["Search + Evaluation"]
-        OS[OpenSearch<br/>BM25 + vector]
-        AE[AutoEval<br/>Claude LLM-as-Judge]
-        ML[MLflow<br/>NDCG/MRR tracking]
+        OS["OpenSearch\nBM25 + vector"]
+        AE["AutoEval\nClaude LLM-as-Judge"]
+        MLF["MLflow\nNDCG and MRR tracking"]
     end
-
+ 
     subgraph UserFacing["User-Facing Layer"]
-        API[FastAPI<br/>REST endpoints]
-        MCP[MCP Server<br/>7 tools]
-        Chat[RAG Chatbot<br/>Claude + ChromaDB]
-        Dash[Streamlit<br/>Dashboard]
+        API["FastAPI\nREST endpoints"]
+        MCP["MCP Server\n7 tools"]
+        Chat["RAG Chatbot\nClaude + ChromaDB"]
+        Dash["Streamlit\nDashboard"]
     end
-
+ 
     subgraph Storage["Storage"]
-        S3[Amazon S3<br/>Data lake]
-        SF[Snowflake<br/>Analytical warehouse]
-        PG[PostgreSQL<br/>Operational DB]
-        Chroma[ChromaDB<br/>RAG vectors]
+        S3["Amazon S3\nData lake"]
+        SF["Snowflake\nAnalytical warehouse"]
+        PG["PostgreSQL\nOperational DB"]
+        Chroma["ChromaDB\nRAG vectors"]
     end
-
-    Open Food Facts --> Kafka
+ 
+    OFF --> Kafka
     OP --> Kafka
     FDA --> Kafka
-    Open Food Facts --> Airflow
+    OFF --> Airflow
     USDA --> Airflow
     FDA --> Airflow
     Kafka --> Spark
@@ -697,7 +697,7 @@ graph TB
     KG --> OS
     ESCI --> AE
     OS --> AE
-    AE --> ML
+    AE --> MLF
     SF --> PW
     PW --> IF
     IF --> RC
@@ -709,8 +709,8 @@ graph TB
     Chat --> Dash
     SF --> Dash
     PG --> Dash
-    ML --> Dash
-    IC --> |UC4 Stretch| PG
+    MLF --> Dash
+    IC -->|UC4 Stretch| PG
 ```
 
 ### B. MCP Tool Definitions

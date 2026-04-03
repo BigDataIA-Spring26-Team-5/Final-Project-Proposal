@@ -2,8 +2,6 @@
 
 ## DAMG 7245: Big Data and Intelligent Analytics
 
----
-
 ### Team Members
 
 - Bhavya Likhitha Bukka
@@ -18,13 +16,8 @@ Bhavya Likhitha Bukka: 33.3%
 Deepika Vaddadi: 33.3%
 Aqeel Ryan: 33.3%
 
----
 
-## 1. Title
-
-**Marketplace Intelligence & Data Quality Observability Platform**
-
----
+## 1. Title : **Marketplace Intelligence & Data Quality Observability Platform**
 
 ## 2. Introduction
 

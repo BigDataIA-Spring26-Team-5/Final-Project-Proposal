@@ -140,7 +140,7 @@ This project delivers:
 
 #### Big Data & Processing
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **Apache Spark** | Processes 4M+ products in parallel. Pandas can't handle this scale |
 | **Apache Kafka** | Catches new data as it arrives (every few minutes from Open Prices, daily from Open Food Facts, weekly from FDA) |
@@ -148,13 +148,13 @@ This project delivers:
 
 #### Orchestration
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **Apache Airflow** | The backbone. Schedules and runs the entire pipeline automatically: "run Open Food Facts ingestion daily → trigger data quality scoring → refresh search index → run anomaly detection." Every step depends on the previous one. If ingestion fails, nothing downstream runs. |
 
 #### LLM & AI
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **DSPy** | Programs LLMs to extract structured attributes. Not prompt engineering, but actual code with optimizers |
 | **Groq (Llama 3.3 70B)** | Free, fast LLM for bulk tasks. Extracts attributes from thousands of products |
@@ -163,7 +163,7 @@ This project delivers:
 
 #### Search & Knowledge
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **Neo4j** | Graph database. Stores how products, categories, brands, and attributes connect to each other |
 | **OpenSearch** | Search engine. Handles both keyword search ("cheerios") and meaning search ("healthy breakfast") in one place |
@@ -171,14 +171,14 @@ This project delivers:
 
 #### Data Quality & Observability
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **Great Expectations** | Data quality checks as code: "this column should never have more than 5% nulls." Halts pipeline if violated |
 | **Isolation Forest** | Anomaly detection ML model. Spots unusual values in pipeline metrics (sudden null spikes, row count drops) |
 
 #### ML & Experiment Tracking
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **MLflow** | Tracks every ML experiment. Tracks model versions, accuracy, and cost. Manages staging → production |
 | **rapidfuzz** | Fuzzy string matching. Figures out that "Cheerios" and "Cheerios Cereal" are the same product |
@@ -186,7 +186,7 @@ This project delivers:
 
 #### Evaluation & Testing
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **DeepEval** | LLM evaluation framework. Measures if search results are actually good using 14+ metrics |
 | **ArkSim** | Stress-tests the search system and chatbot by simulating realistic multi-turn user conversations at scale |
@@ -208,14 +208,14 @@ This project delivers:
 
 #### API & Frontend
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **FastAPI** | Backend API. Serves all data to the dashboard, chatbot, and MCP tools |
 | **Streamlit** | Frontend dashboard + RAG chatbot interface. What the data quality engineer actually sees and uses |
 
 #### Cloud & Storage (AWS)
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **S3** | Data lake. Stores all raw data, processed files, and model artifacts |
 | **EC2** | Compute. Runs Spark, Kafka, Neo4j, and application services |
@@ -225,7 +225,7 @@ This project delivers:
 
 #### CI/CD & Deployment
 
-| Tool | What it does (plain English) |
+| Tool | What it does  |
 |---|---|
 | **Docker** | Packages everything into containers so it runs the same everywhere |
 | **Amazon ECR** | Stores Docker images in the cloud |

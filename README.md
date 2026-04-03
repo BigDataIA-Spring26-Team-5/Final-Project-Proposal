@@ -1,7 +1,5 @@
 # Final Project Proposal
-
 ## DAMG 7245: Big Data and Intelligent Analytics
-
 ### Team Members
 
 - Bhavya Likhitha Bukka
@@ -18,9 +16,7 @@ Aqeel Ryan: 33.3%
 
 
 ## 1. Title : **Marketplace Intelligence & Data Quality Observability Platform**
-
 ## 2. Introduction
-
 ### 2.1 Background
 
 Marketplace product catalogs are fragmented, inconsistent, and difficult to trust. Every marketplace company (DoorDash, Instacart, Airbnb, Shopify, Walmart, Amazon) ingests product data from thousands of sellers and sources, and none of it is standardized. The same product appears with different names, different attributes, and different levels of completeness depending on who entered it and where.

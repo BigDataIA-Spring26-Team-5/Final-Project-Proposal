@@ -10,9 +10,12 @@
 
 WE ATTEST THAT WE HAVEN'T USED ANY OTHER STUDENTS' WORK IN OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT HANDBOOK.
 
-Bhavya Likhitha Bukka: 33.3%
-Deepika Vaddadi: 33.3%
-Aqeel Ryan: 33.3%
+| Member | Contribution |
+|---|---|
+| Bhavya Likhitha Bukka | 33.3% |
+| Deepika Vaddadi | 33.3% |
+| Aqeel Ryan | 33.3% |
+ 
 
 
 ## 1. Title : **Marketplace Intelligence & Data Quality Observability Platform**

@@ -29,7 +29,7 @@ tab1, tab2, tab3, tab4 = st.tabs([
     "UC4: Recommendations",
 ])
 
-from pages import uc1_enrichment, uc2_quality, uc3_search, uc4_recommendations
+from views import uc1_enrichment, uc2_quality, uc3_search, uc4_recommendations
 
 with tab1:
     uc1_enrichment.render()

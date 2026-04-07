@@ -38,6 +38,73 @@ LEGAL_SUFFIXES = {
 # Catches domain-specific noise like "foods" in a food dataset, or "pharma" in a drug dataset.
 # No human decides this — the data tells us.
 
+# Company name aliases: map lowercased noise-stripped variations → canonical brand name
+COMPANY_ALIASES = {
+    # General Mills
+    "general mills sales": "General Mills",
+    "general mills": "General Mills",
+    # Kellogg's
+    "kellogg co": "Kellogg's",
+    "kelloggs": "Kellogg's",
+    "kellogg": "Kellogg's",
+    # Kraft Heinz
+    "kraft foods": "Kraft Heinz",
+    "heinz": "Kraft Heinz",
+    "kraft": "Kraft Heinz",
+    # Conagra
+    "conagra brands": "Conagra",
+    "conagra foods": "Conagra",
+    # Nestlé  (note: "usa" is stripped by LEGAL_SUFFIXES before alias lookup)
+    "nestle usa": "Nestlé",
+    "nestle": "Nestlé",
+    # Unilever
+    "unilever home": "Unilever",
+    "unilever bestfoods": "Unilever",
+    # PepsiCo / Frito-Lay
+    "pepsico": "PepsiCo",
+    "frito lay": "Frito-Lay",
+    "frito lay north america": "Frito-Lay",
+    # Coca-Cola
+    "coca cola": "Coca-Cola",
+    "the coca cola company": "Coca-Cola",
+    # Hormel
+    "hormel foods": "Hormel",
+    # Post
+    "post consumer brands": "Post",
+    # Campbell's
+    "campbells": "Campbell's",
+    "campbell soup": "Campbell's",
+    # Ferrero
+    "ferrero usa": "Ferrero",
+    "ferrero": "Ferrero",
+    # Mars
+    "mars wrigley": "Mars",
+    "mars": "Mars",
+    # Tyson
+    "tyson foods": "Tyson",
+    # Dannon
+    "the dannon company": "Dannon",
+    # Quaker
+    "quaker oats": "Quaker",
+    # Nabisco / Mondelez
+    "nabisco": "Nabisco",
+    "mondelez": "Mondelēz",
+}
+
+# Allergen keywords for rule-based detection (FDA Big-9 allergens)
+ALLERGEN_KEYWORDS = {
+    "milk":      ["milk", "cream", "butter", "cheese", "whey", "casein", "lactose"],
+    "wheat":     ["wheat", "flour", "gluten", "semolina", "spelt", "barley", "rye"],
+    "soy":       ["soy", "soybean", "soy lecithin", "tofu", "edamame"],
+    "eggs":      ["egg", "eggs", "albumin", "mayonnaise"],
+    "peanuts":   ["peanut", "peanuts", "groundnut"],
+    "tree nuts": ["almond", "hazelnut", "walnut", "cashew", "pecan", "pistachio", "macadamia", "brazil nut"],
+    "fish":      ["salmon", "tuna", "cod", "tilapia", "anchovy", "sardine"],
+    "shellfish": ["shrimp", "crab", "lobster", "clam", "oyster", "scallop"],
+    "sesame":    ["sesame", "tahini"],
+    "sulfites":  ["sulfite", "sulphite", "sulfur dioxide"],
+}
+
 TEXT_COLS = ["description", "brand_owner", "brand_name"]
 
 STEPS = [
@@ -163,6 +230,51 @@ def strip_sizes(text):
         "", text, flags=re.IGNORECASE,
     )
     return text.strip()
+
+
+def extract_size(text):
+    """Extract the size/unit token from a product description. Returns the size string or ''."""
+    text = str(text)
+    parts = []
+    m = re.match(r"(\.?\d+(?:\.\d+)?\s*oz)\s+", text, flags=re.IGNORECASE)
+    if m:
+        parts.append(m.group(1).strip())
+    m2 = re.search(
+        r"[,\s]+(\d+(?:\.\d+)?\s*(?:oz|ounces?|liters?|l|ml|mlt|gal|lb|lbs|kg|g|grm|ct|pk|pack))\b.*$",
+        text, flags=re.IGNORECASE,
+    )
+    if m2:
+        parts.append(m2.group(1).strip())
+    if not parts:
+        m3 = re.search(r"\s+(\d+(?:\.\d+)?\s*z)\s*$", text, flags=re.IGNORECASE)
+        if m3:
+            parts.append(m3.group(1).strip())
+    return parts[0] if parts else ""
+
+
+def normalize_company(text):
+    """Map brand owner text to a canonical company name via COMPANY_ALIASES.
+    Falls back to title-cased original if no alias matches."""
+    if not text or pd.isna(text):
+        return ""
+    cleaned = remove_noise(str(text).lower().strip(), list(LEGAL_SUFFIXES))
+    cleaned = remove_punct(cleaned).strip()
+    if cleaned in COMPANY_ALIASES:
+        return COMPANY_ALIASES[cleaned]
+    for alias, canonical in COMPANY_ALIASES.items():
+        if alias in cleaned:
+            return canonical
+    return str(text).strip().title()
+
+
+def extract_allergens(ingredients_text):
+    """Scan ingredient string for allergen keywords (FDA Big-9). Returns comma-separated list."""
+    if pd.isna(ingredients_text) or not str(ingredients_text).strip():
+        return ""
+    text = str(ingredients_text).lower()
+    found = [allergen for allergen, keywords in ALLERGEN_KEYWORDS.items()
+             if any(kw in text for kw in keywords)]
+    return ", ".join(found)
 
 
 def full_normalize(text, noise_words=None):
@@ -623,6 +735,38 @@ This scales to any dataset size. No manual review needed.
     else:
         st.info("No brand names changed — noise words may not be present in this dataset's brand names.")
 
+    # --- Company Aliases ---
+    st.markdown("---")
+    st.markdown("### Company Name Aliases")
+    st.write("Even after removing noise words, brand owner names still vary: "
+             '`"General Mills Sales"` and `"General Mills"` are the same company. '
+             "A lookup dictionary maps known variations to canonical names.")
+    st.write("**Alias dictionary (excerpt):**")
+    alias_sample = {k: v for k, v in list(COMPANY_ALIASES.items())[:12]}
+    st.json(alias_sample)
+
+    alias_rows = []
+    for brand in sorted(raw_df["brand_owner"].dropna().unique()):
+        after_noise = remove_noise(str(brand).lower(), _noise_words)
+        canonical = normalize_company(str(brand))
+        changed = canonical.lower() != str(brand).strip().lower()
+        alias_rows.append({
+            "brand_owner (raw)": str(brand),
+            "after noise removal": after_noise,
+            "canonical name": canonical,
+            "alias matched": "YES" if changed else "—",
+        })
+
+    alias_df = pd.DataFrame(alias_rows)
+
+    def highlight_alias(row):
+        if row["alias matched"] == "YES":
+            return ["background-color: #90EE90"] * len(row)
+        return [""] * len(row)
+
+    st.write(f"**{alias_df[alias_df['alias matched'] == 'YES'].shape[0]} brands** resolved to canonical names:")
+    st.dataframe(alias_df.style.apply(highlight_alias, axis=1), use_container_width=True)
+
 # ===================================================================
 # STEP 6: Remove Punctuation
 # ===================================================================
@@ -742,6 +886,71 @@ elif st.session_state.step == 7:
             st.success(f'**"{norm_key}"** — {len(items)} rows now match:')
             for item in items:
                 st.write(f'  - fdc_id `{item["fdc_id"]}`: `"{item["original"]}"`')
+
+    # --- Sizes Column ---
+    st.markdown("---")
+    st.markdown("### Extracted Sizes Column")
+    st.write("The size stripped from each description is saved as a `size_label` column. "
+             "At cluster level (Step 10), all size variants for the same product are aggregated into a list.")
+
+    size_rows = []
+    for idx in raw_df.index:
+        desc = str(raw_df.at[idx, "description"]) if pd.notna(raw_df.at[idx, "description"]) else ""
+        size_label = extract_size(desc)
+        sv = raw_df.at[idx, "serving_size"]
+        svu = raw_df.at[idx, "serving_size_unit"] if pd.notna(raw_df.at[idx, "serving_size_unit"]) else ""
+        serving = f"{sv} {svu}".strip() if pd.notna(sv) else ""
+        size_rows.append({
+            "fdc_id": raw_df.at[idx, "fdc_id"],
+            "description": desc[:60],
+            "size_label (from desc)": size_label,
+            "serving_size": serving,
+        })
+
+    size_df = pd.DataFrame(size_rows)
+    n_with_size = size_df[size_df["size_label (from desc)"] != ""].shape[0]
+    st.metric("Rows with extracted size", f"{n_with_size} / {len(size_df)}")
+    st.dataframe(size_df, use_container_width=True)
+
+    # --- Allergens Column ---
+    st.markdown("---")
+    st.markdown("### Allergens Column (Rule-Based)")
+    st.write("The `ingredients` field is scanned against a predefined keyword dictionary "
+             "covering the **FDA Big-9 allergens**. No LLM needed.")
+
+    st.write("**Allergen keyword dictionary:**")
+    st.json(ALLERGEN_KEYWORDS)
+
+    allergen_rows = []
+    for idx in raw_df.index:
+        desc = str(raw_df.at[idx, "description"]) if pd.notna(raw_df.at[idx, "description"]) else ""
+        ing = raw_df.at[idx, "ingredients"] if pd.notna(raw_df.at[idx, "ingredients"]) else ""
+        allergens_found = extract_allergens(ing)
+        allergen_rows.append({
+            "fdc_id": raw_df.at[idx, "fdc_id"],
+            "description": desc[:50],
+            "ingredients (truncated)": str(ing)[:80],
+            "allergens_found": allergens_found if allergens_found else "none",
+        })
+
+    allergen_df = pd.DataFrame(allergen_rows)
+    n_with_allergens = allergen_df[allergen_df["allergens_found"] != "none"].shape[0]
+
+    c1, c2 = st.columns(2)
+    c1.metric("Rows with allergens detected", n_with_allergens)
+    c2.metric("Rows with no allergens", len(allergen_df) - n_with_allergens)
+
+    st.dataframe(allergen_df, use_container_width=True)
+
+    # Breakdown by allergen type
+    st.markdown("**Breakdown by allergen type:**")
+    breakdown = {}
+    for allergen in ALLERGEN_KEYWORDS:
+        count = allergen_df["allergens_found"].str.contains(allergen, na=False).sum()
+        breakdown[allergen] = count
+    breakdown_df = pd.DataFrame([{"Allergen": k, "Products Affected": v}
+                                  for k, v in sorted(breakdown.items(), key=lambda x: -x[1])])
+    st.dataframe(breakdown_df, use_container_width=True)
 
 # ===================================================================
 # STEP 8: Blocking & Fuzzy Matching
@@ -1007,9 +1216,31 @@ Ingredient Richness = normalized ingredient text length (0=shortest, 1=longest)
             st.success(f"**Winner:** fdc_id `{winner_fdc}` (DQ Score: {score_df.loc[winner_idx, 'DQ Score']})")
             st.write(f"**Dropped:** fdc_ids `{', '.join(dropped_fdc)}`")
 
+            # Sizes aggregation
+            all_sizes = []
+            all_serving = []
+            for m in members:
+                sz = extract_size(str(raw_df.at[m, "description"]))
+                if sz:
+                    all_sizes.append(sz)
+                sv = raw_df.at[m, "serving_size"]
+                svu = raw_df.at[m, "serving_size_unit"] if pd.notna(raw_df.at[m, "serving_size_unit"]) else ""
+                if pd.notna(sv):
+                    all_serving.append(f"{sv} {svu}".strip())
+            all_sizes = list(dict.fromkeys(all_sizes))          # dedup, preserve order
+            all_serving = list(dict.fromkeys(all_serving))
+            st.write(f"**Sizes (from descriptions):** `{all_sizes}`")
+            st.write(f"**Serving sizes (from serving_size column):** `{all_serving}`")
+
             # Collect winner index in original df
             winner_orig_idx = members[score_df["DQ Score"].values.tolist().index(score_df.loc[winner_idx, "DQ Score"])]
             golden_records.append(winner_orig_idx)
+            # Store sizes for Step 12
+            if "cluster_sizes" not in st.session_state:
+                st.session_state["cluster_sizes"] = {}
+                st.session_state["cluster_serving"] = {}
+            st.session_state["cluster_sizes"][winner_orig_idx] = all_sizes
+            st.session_state["cluster_serving"][winner_orig_idx] = all_serving
             merge_summary.append({
                 "Product": desc,
                 "Original Rows": len(members),
@@ -1148,31 +1379,13 @@ elif st.session_state.step == 11:
     rule_hit = deduped_df["rule_category"].notna()
     rule_miss = ~rule_hit
 
-    # Allergen extraction from ingredients using keyword search
-    ALLERGEN_KEYWORDS = {
-        "milk": ["milk", "cream", "butter", "cheese", "whey", "casein", "lactose"],
-        "wheat": ["wheat", "flour", "gluten"],
-        "soy": ["soy", "soybean", "soy lecithin"],
-        "eggs": ["egg", "eggs"],
-        "peanuts": ["peanut", "peanuts"],
-        "tree nuts": ["almond", "hazelnut", "walnut", "cashew", "pecan", "pistachio"],
-    }
-
-    def extract_allergens_rule(ingredients_text):
-        """Extract allergens by scanning ingredients for keywords. No LLM needed."""
-        text = str(ingredients_text).lower()
-        found = []
-        for allergen, keywords in ALLERGEN_KEYWORDS.items():
-            if any(kw in text for kw in keywords):
-                found.append(allergen)
-        return ", ".join(found) if found else ""
-
-    deduped_df["rule_allergens"] = deduped_df["ingredients"].apply(extract_allergens_rule)
+    # Allergen extraction from ingredients using keyword search (uses top-level ALLERGEN_KEYWORDS)
+    deduped_df["rule_allergens"] = deduped_df["ingredients"].apply(extract_allergens)
 
     # Check organic
     deduped_df["rule_is_organic"] = deduped_df["description"].str.lower().str.contains("organic", na=False)
 
-    st.write("**Allergen keywords** (scan ingredients text for these):")
+    st.write("**Allergen keywords** (FDA Big-9 — scan ingredients text for these):")
     st.json(ALLERGEN_KEYWORDS)
 
     st.markdown("### Rule-Based Results")
@@ -1464,23 +1677,6 @@ elif st.session_state.step == 12:
         "Pepperoni, Salami & Cold Cuts": "Meat",
         "Pre-Packaged Fruit & Vegetables": "Produce",
     }
-    ALLERGEN_KEYWORDS = {
-        "milk": ["milk", "cream", "butter", "cheese", "whey", "casein", "lactose"],
-        "wheat": ["wheat", "flour", "gluten"],
-        "soy": ["soy", "soybean", "soy lecithin"],
-        "eggs": ["egg", "eggs"],
-        "peanuts": ["peanut", "peanuts"],
-        "tree nuts": ["almond", "hazelnut", "walnut", "cashew", "pecan", "pistachio"],
-    }
-
-    def extract_allergens(text):
-        text = str(text).lower()
-        found = []
-        for allergen, kws in ALLERGEN_KEYWORDS.items():
-            if any(kw in text for kw in kws):
-                found.append(allergen)
-        return ", ".join(found) if found else ""
-
     def clean_description(desc):
         """Clean the raw description: strip sizes, title case, remove noise patterns."""
         text = str(desc).strip()
@@ -1499,6 +1695,20 @@ elif st.session_state.step == 12:
     final_df["primary_category"] = final_df["food_category"].map(CATEGORY_MAP).fillna("")
     final_df["allergens"] = final_df["ingredients"].apply(extract_allergens)
     final_df["is_organic"] = final_df["description"].str.lower().str.contains("organic", na=False)
+    final_df["canonical_brand"] = final_df["brand_owner"].apply(normalize_company)
+
+    # Sizes: use cluster aggregation from Step 10 session state if available, else per-row extraction
+    cluster_sizes_map = st.session_state.get("cluster_sizes", {})
+    cluster_serving_map = st.session_state.get("cluster_serving", {})
+    final_df["sizes"] = final_df.index.map(
+        lambda i: ", ".join(cluster_sizes_map[i]) if i in cluster_sizes_map
+        else extract_size(str(raw_df.at[i, "description"]) if i in raw_df.index else "")
+    )
+    final_df["serving_sizes"] = final_df.index.map(
+        lambda i: ", ".join(cluster_serving_map[i]) if i in cluster_serving_map
+        else (f"{raw_df.at[i, 'serving_size']} {raw_df.at[i, 'serving_size_unit']}".strip()
+              if i in raw_df.index and pd.notna(raw_df.at[i, "serving_size"]) else "")
+    )
 
     # Before vs After metrics
     st.markdown("### Pipeline Summary")
@@ -1534,9 +1744,9 @@ elif st.session_state.step == 12:
         st.write("No descriptions needed size removal.")
 
     st.markdown("### Final Cleaned Dataset")
-    display_cols = ["fdc_id", "clean_description", "brand_owner", "brand_name", "primary_category",
-                    "allergens", "is_organic", "food_category", "serving_size",
-                    "serving_size_unit", "published_date"]
+    display_cols = ["fdc_id", "clean_description", "canonical_brand", "brand_owner", "brand_name",
+                    "primary_category", "allergens", "is_organic", "sizes", "serving_sizes",
+                    "food_category", "serving_size", "serving_size_unit", "published_date"]
     available_cols = [c for c in display_cols if c in final_df.columns]
     st.dataframe(final_df[available_cols], use_container_width=True, height=500)
 
@@ -1555,8 +1765,8 @@ elif st.session_state.step == 12:
 
     st.markdown("### Download")
     # Build a clean export with best column order
-    export_cols = ["fdc_id", "clean_description", "brand_owner", "brand_name",
-                   "primary_category", "allergens", "is_organic",
+    export_cols = ["fdc_id", "clean_description", "canonical_brand", "brand_owner", "brand_name",
+                   "primary_category", "allergens", "is_organic", "sizes", "serving_sizes",
                    "gtin_upc", "ingredients", "food_category",
                    "serving_size", "serving_size_unit", "published_date",
                    "market_country", "data_source", "description"]

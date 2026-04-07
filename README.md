@@ -11,7 +11,7 @@
 | Name | Contribution |
 |---|---|
 | Bhavya Likhitha Bukka | 33.3% |
-| Deepika Vaddadi | 33.3% |
+| Dwaraka Deepika Vaddadi | 33.3% |
 | Aqeel Ryan | 33.3% |
 
 ### Attestation

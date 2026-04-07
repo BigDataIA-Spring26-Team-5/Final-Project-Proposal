@@ -1,0 +1,205 @@
+Final Project Proposal Template
+DAMG 7245 — Big Data and Intelligent Analytics  
+
+Team Members
+Member 1
+Member 2
+Member 3
+Attestation (Required)
+WE ATTEST THAT WE HAVEN’T USED ANY OTHER STUDENTS’ WORK IN OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT HANDBOOK.
+
+member1: 33.3%
+member2: 33.3%
+member3: 33.3%
+1. Title
+Provide a concise, descriptive, and professional title for your project.
+
+2. Introduction
+2.1 Background
+Describe the problem domain, real-world context, data-related challenges, and why this topic matters.
+
+2.2 Objective
+State the primary goals of your project and what you aim to deliver:
+
+Big data engineering component
+Significant LLM use
+Cloud-native architecture
+User-facing application
+3. Project Overview
+3.1 Scope
+Define what is in-scope and out-of-scope, including:
+
+Data sources (must be multiple or large-scale)
+ETL pipelines
+LLM components
+Cloud infrastructure
+Guardrails & HITL
+Evaluation strategy
+3.2 Stakeholders / End Users
+Identify users who will benefit from your solution.
+
+4. Problem Statement
+4.1 Current Challenges
+Explain existing gaps or inefficiencies:
+
+Data fragmentation
+Manual workflows
+Lack of intelligent automation
+Big-data or LLM-related bottlenecks
+4.2 Opportunities
+Describe the improvements and value your solution brings:
+
+Scalable pipelines
+LLM-assisted analysis
+Automated decision-making
+Real-time or near–real-time insights
+5. Methodology
+5.1 Data Sources
+List all sources of data, including:
+
+Public datasets
+Scraped websites
+APIs
+Cloud open-data registries
+Include expected data volume (GB/TB) and justification of scale.
+
+5.2 Technology Stack
+Specify technologies and justify your choices:
+
+Cloud: AWS / GCP / Azure / Snowflake
+Storage: S3 / GCS / Azure Blob / BigQuery / DynamoDB
+Compute: Spark / Ray / Dataproc / EMR / Kubernetes / Cloud Run
+LLM Providers: OpenAI / Claude / Gemini / LLaMA
+Vector Store: Pinecone / Chroma / Weaviate / BigQuery Vector
+Orchestration: Airflow
+API: FastAPI / Cloud Functions / Lambda
+CI/CD: GitHub Actions
+Frontend (if applicable): Streamlit / React / Flask UI
+5.3 Architecture
+Provide a detailed architecture description and include diagrams for:
+
+Data ingestion
+Data cleaning & preprocessing
+Big-data parallel transformation
+Embedding + vector pipelines
+LLM workflows (e.g., RAG, agentic flows, extraction, reasoning)
+Guardrails + moderation layers
+HITL decision loops
+REST API endpoints
+Front-end application
+Include both:
+
+System Architecture Diagram
+Data Flow Diagram (DFD)
+5.4 Data Processing & Transformation
+Explain:
+
+batch/stream processing
+data formats
+storage schemas
+parallel processing strategy
+feature engineering (if relevant)
+embedding generation
+5.5 LLM Integration Strategy
+Detail how LLMs will be used, including:
+
+Prompt design
+Retrieval-augmented generation (if used)
+Agentic workflows (if used)
+API usage pattern
+How the LLM contributes to solving the business or technical problem
+5.6 Guardrails & Human-in-the-Loop (HITL)
+Describe:
+
+Input moderation
+Output validation
+Schema enforcement (Pydantic / JSON Schema)
+Safety layers (toxicity, hallucination detection)
+When/where human approval is required
+5.7 Evaluations & Testing
+Include:
+
+LLM eval framework (rubric-based, automated graders, golden sets)
+Unit tests for ETL, APIs, LLM wrappers, and pipeline logic
+Integration tests
+CI pipeline (GitHub Actions)
+Metrics (accuracy, latency, cost, throughput)
+5.8 Proof of Concept (POC)
+Provide:
+
+preliminary EDA
+example transformations
+first LLM experiments
+small architecture demo
+Screenshots or code snippets are acceptable.
+
+6. Project Plan & Timeline
+6.1 Milestones
+Break into phases (examples):
+
+M1: Data ingestion & scraping
+M2: Big data processing pipeline
+M3: LLM integration + guardrails
+M4: Backend APIs
+M5: Front-end / Application
+M6: Cloud deployment
+M7: Testing + Evals
+M8: Final polishing
+6.2 Timeline
+Provide a Gantt-style table or a GitHub Projects screenshot.
+
+7. Team Roles & Responsibilities
+List each member and their responsibilities:
+
+ETL Lead
+Cloud Architect
+LLM Engineer
+QA/Test Engineer
+Documentation Lead
+8. Risks & Mitigation
+8.1 Potential Risks
+Examples:
+
+scraping failures
+data inconsistency
+LLM hallucinations
+high API cost
+scaling issues
+8.2 Mitigation Strategies
+Examples:
+
+rate-limiting + retries
+evals + guardrails
+caching embeddings
+distributed compute
+autoscaling
+9. Expected Outcomes & Metrics
+9.1 KPIs
+Define measurable targets:
+
+accuracy
+runtime improvement
+throughput
+token reduction
+cost optimization
+9.2 Expected Benefits
+Explain how the project will create value (technical or business).
+
+10. Token & Cost Report (Required)
+Describe how you will measure and report:
+
+total tokens consumed
+cost drivers
+prompt optimization strategy
+caching / batching techniques
+11. Conclusion
+Summarize why this project matters and what impact it will make.
+
+12. References
+List all external resources, datasets, APIs, and publications used.
+
+Appendix
+Mermaid diagrams
+Pseudocode
+Sample prompts
+JSON/XML schemas

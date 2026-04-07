@@ -1,0 +1,94 @@
+product_id,name,brand,source,completeness,consistency,accuracy,freshness,dq_score
+16000275287,Cheerios,Cheerios,off,20.8,25.0,25.0,10.0,80.8
+16000487925,Honey Nut Chex Cereal,General Mills,off,25.0,25.0,25.0,10.0,85.0
+38000138416,Original,Pringles,off,20.8,25.0,25.0,10.0,80.8
+44000032159,Ritz Bits Cheese Cracker Sandwiches,Nabisco,off,20.8,25.0,25.0,10.0,80.8
+49000006346,Coca Cola,Coca Cola,off,16.7,25.0,25.0,10.0,76.7
+9800895007,Hazelnut Spread with Cocoa,Nutella,off,25.0,25.0,25.0,10.0,85.0
+21000658831,Mac and Cheese,Kraft,off,20.8,25.0,25.0,10.0,80.8
+8076809513753,Pesto alla Genovese,Barilla,off,20.8,25.0,25.0,10.0,80.8
+5060292302201,Potato Snacks,Popchips,off,20.8,25.0,25.0,10.0,80.8
+30000169018,Lightly Salted Rice Cakes,Quaker,off,20.8,25.0,20.0,10.0,75.8
+30000436073,"Granola Oats with Honey, Raisins, and Almonds",Quaker,off,25.0,25.0,25.0,10.0,85.0
+30000169476,Chocolate Rice Cakes,Quaker,off,25.0,25.0,25.0,10.0,85.0
+30000169001,Apple Cinnamon Rice Cakes,Quaker,off,25.0,25.0,25.0,10.0,85.0
+30000169100,Caramel Rice Cakes,Quaker,off,25.0,25.0,25.0,10.0,85.0
+1201303,Pepsi,Pepsi,off,16.7,25.0,25.0,10.0,76.7
+1212901,Pepsi,Pepsi,off,16.7,25.0,25.0,10.0,76.7
+1280504,Diet Pepsi,Pepsi,off,20.8,25.0,25.0,10.0,80.8
+12000171741,Diet Pepsi,Pepsi,off,20.8,25.0,25.0,10.0,80.8
+6111252421582,Aquafina,Pepsi,off,20.8,25.0,15.0,10.0,70.8
+3400704,Ice Breakers Cool Mint,Hershey,off,20.8,25.0,25.0,10.0,80.8
+10700021526,Milk Duds,Hershey,off,20.8,25.0,25.0,10.0,80.8
+34000944552,Plant Based Oat Chocolate Confection,Hershey,off,25.0,25.0,25.0,10.0,85.0
+810031480364,Hershey's S'mores Popcorn,Hershey,off,12.5,25.0,15.0,10.0,62.5
+3403109,Mounds Dark Chocolate,Hershey,off,20.8,25.0,25.0,10.0,80.8
+77567254238,Natural Vanilla Ice Cream,Breyers,off,20.8,25.0,25.0,10.0,80.8
+186852000389,Gelato Madagascan Vanilla Bean,Talenti,off,20.8,25.0,25.0,10.0,80.8
+12000012754,Green Tea,Lipton,off,16.7,25.0,25.0,10.0,76.7
+186852000334,Caramel Cookie Crunch Gelato,Talenti,off,20.8,25.0,25.0,10.0,80.8
+77567226006,Breyers Vanilla Ice Cream,Breyers,off,20.8,25.0,25.0,10.0,80.8
+28400040037,Fritos,Frito-Lay,off,20.8,25.0,25.0,10.0,80.8
+28400091565,Lays Classic,Lays,off,25.0,25.0,25.0,10.0,85.0
+28400761918,Sweet Potato Popables,Lays,off,20.8,25.0,25.0,10.0,80.8
+28400679732,Baked Popped Mix,Lays,off,20.8,25.0,25.0,10.0,80.8
+28400770088,Classic,Lays,off,25.0,25.0,25.0,10.0,85.0
+9800895250,Hazelnut Spread with Cocoa,Nutella,off,25.0,25.0,25.0,10.0,85.0
+9800892204,Hazelnut Spread with Cocoa,Nutella,off,20.8,25.0,25.0,10.0,80.8
+9800830039,Nutella Biscuits,Nutella,off,20.8,25.0,25.0,10.0,80.8
+9800800056,Hazelnut Spread with Breadsticks,Nutella,off,20.8,25.0,25.0,10.0,80.8
+3168930010265,Cruesly Mélange de Noix,Quaker,off,25.0,25.0,25.0,10.0,85.0
+3229820160672,Croustillant Chocolat,Bjorg,off,25.0,25.0,25.0,10.0,85.0
+3229820019307,Oat Flakes,Bjorg,off,25.0,25.0,25.0,10.0,85.0
+3229820129488,"Muesli Raisin, Fig, Apricot",Bjorg,off,25.0,25.0,25.0,10.0,85.0
+3387390123210,Nestle Chocapic Cereal,Nestle,off,20.8,25.0,25.0,10.0,80.8
+5053990161966,Pringles Texas BBQ,Pringles,off,20.8,25.0,25.0,10.0,80.8
+3497917000136,Chips Paysanne,Brets,off,20.8,25.0,25.0,10.0,80.8
+5053990161607,Pringles Paprika,Pringles,off,20.8,25.0,25.0,10.0,80.8
+5410041143508,Gout Bacon,Tuc,off,20.8,25.0,25.0,10.0,80.8
+5053990127665,Pringles Hot and Spicy,Pringles,off,20.8,25.0,25.0,10.0,80.8
+5449000054227,Coca Cola Original,Coca-Cola,off,16.7,25.0,25.0,10.0,76.7
+5449000214799,Coke Zero,Coca-Cola,off,20.8,25.0,25.0,10.0,80.8
+759418,Cheerios Cereal,GENERAL MILLS SALES INC.,usda,16.7,25.0,25.0,10.0,76.7
+360010,FROSTED FLAKES CEREAL,Harris-Teeter Inc.,usda,16.7,20.0,25.0,10.0,71.7
+2112077,FROSTED FLAKES CEREAL,Raley's,usda,16.7,20.0,25.0,10.0,71.7
+2117854,FROSTED FLAKES CEREAL,"Post Consumer Brands, LLC",usda,16.7,20.0,25.0,10.0,71.7
+2595408,"QUAKER OAT FLOUR, 20 OZ",The Quaker Oats Company,usda,16.7,20.0,20.0,10.0,66.7
+2595409,"QUAKER OAT FLOUR, 64 OZ",The Quaker Oats Company,usda,16.7,20.0,20.0,10.0,66.7
+2723877,Quaker Oats Old Fashioned 42 Oz,PepsiCo Inc. Brand Owner,usda,16.7,25.0,20.0,10.0,71.7
+2670912,"OREO FROSTED COOKIES, OREO",,usda,12.5,12.0,25.0,10.0,59.5
+2506892,"OREO VANILLA PUDDING WITH OREO COOKIE PIECES, OREO","Raymundo Food Products, Inc.",usda,16.7,20.0,25.0,10.0,71.7
+1459004,NABISCO CHIPS AHOY! COOKIES CHIPS AHOY! COOKIES 48X4.150 OZ,Mondelez USA,usda,16.7,20.0,25.0,10.0,71.7
+1458457,CHIPS AHOY! COOKIES 1X0.770 OZ,Mondelez USA,usda,16.7,20.0,25.0,10.0,71.7
+1460082,CHIPS AHOY! COOKIES 1X1.55 OZ,Mondelez USA,usda,16.7,20.0,25.0,10.0,71.7
+1999231,"COCA-COLA FLAVORED MINTS, COCA-COLA","Ferrero U.S.A., Incorporated",usda,16.7,20.0,25.0,10.0,71.7
+2641505,"COCA-COLA SODA, 12 FL OZ, 4 COUNT",Coca-Cola USA Operations,usda,16.7,20.0,25.0,10.0,71.7
+2493697,"PEPSI, COLA, WILD CHERRY, WILD CHERRY",Pepsi-Cola North America Inc.,usda,16.7,20.0,25.0,10.0,71.7
+1460452,Pepsi Cola 12 Fluid Ounce Aluminum Can,Pepsico Inc.,usda,16.7,25.0,25.0,10.0,76.7
+2193268,"COOKIES FILLED WITH NUTELLA HAZELNUT SPREAD BISCUITS, COOKIES FILLED WITH NUTELLA HAZELNUT SPREAD","Ferrero U.S.A., Incorporated",usda,16.7,20.0,25.0,10.0,71.7
+2654458,"CRISPY WAFER FILLED WITH NUTELLA HAZELNUT SPREAD WITH COCOA, HAZELNUT SPREAD WITH COCOA","Ferrero U.S.A., Incorporated",usda,16.7,20.0,25.0,10.0,71.7
+2654459,"CRISPY WAFER FILLED WITH NUTELLA HAZELNUT SPREAD WITH COCOA, HAZELNUT SPREAD WITH COCOA","Ferrero U.S.A., Incorporated",usda,16.7,20.0,25.0,10.0,71.7
+1759570,"SKIPPY, PEANUT BUTTER",Hormel Foods Corporation ,usda,16.7,20.0,25.0,10.0,71.7
+1849948,"SKIPPY, CREAMY SPREAD, PEANUT BUTTER, PEANUT BUTTER",Unilever Bestfoods North America,usda,16.7,20.0,25.0,10.0,71.7
+2008989,"SKIPPY, PEANUT BUTTER SPREAD WITH HONEY",Unilever Bestfoods North America,usda,16.7,20.0,25.0,10.0,71.7
+1624854,"HEINZ, TOMATO KETCHUP",Kraft Heinz Foods Company,usda,16.7,20.0,25.0,10.0,71.7
+1850762,"POTATO CHIPS, HEINZ KETCHUP",Herr Foods Inc.,usda,16.7,20.0,25.0,10.0,71.7
+2088784,"HEINZ, TOMATO KETCHUP, HOT & SPICY","Original Chili Co., Inc.",usda,16.7,20.0,25.0,10.0,71.7
+1592690,"KRAFT, MACARONI & CHEESE DINNER",Kraft Heinz Foods Company,usda,16.7,20.0,25.0,10.0,71.7
+2675215,"KRAFT, SHARP CHEDDAR CHEESE",Kraft Heinz Foods Company,usda,16.7,20.0,25.0,10.0,71.7
+1662005,"KRAFT, SHAVED PARMESAN CHEESE",Kraft Heinz Foods Company,usda,16.7,20.0,25.0,10.0,71.7
+1912642,"HERSHEY'S, MILK CHOCOLATE",Ross Acquisition Inc.,usda,16.7,20.0,25.0,10.0,71.7
+2667092,"M&M'S MINIS, M&M'S",Brownie Brittle LLC,usda,16.7,20.0,25.0,10.0,71.7
+2418796,"MINI M&M COOKIES M&M BAKING BITS, MINI M&M",Jerry's Enterprises Inc.,usda,16.7,20.0,25.0,10.0,71.7
+1898075,M&M'S MINIS,"Wegmans Food Markets, Inc. ",usda,16.7,20.0,25.0,10.0,71.7
+1455998,CAMPBELL'S SOUP DISCONTINUED,CAMPBELL SOUP COMPANY,usda,16.7,20.0,25.0,10.0,71.7
+756994,CAMPBELL'S SOUP LENTIL,CAMPBELL SOUP COMPANY,usda,16.7,20.0,25.0,10.0,71.7
+757014,CAMPBELL'S SOUP STEAK,CAMPBELL SOUP COMPANY,usda,16.7,20.0,25.0,10.0,71.7
+2699981,"Prego Classic Pasta Sauce, 18.5 Oz Can",CAMPBELL SOUP COMPANY,usda,16.7,25.0,25.0,10.0,76.7
+2695835,"Prego Mushroom Pasta Sauce, 14 oz Jar",CAMPBELL SOUP COMPANY,usda,16.7,25.0,25.0,10.0,76.7
+2695834,"Prego Mushroom Pasta Sauce, 24 oz Jar",CAMPBELL SOUP COMPANY,usda,16.7,25.0,25.0,10.0,76.7
+2016665,"ACADEMIA BARILLA, FARFALLE BARILLA PASTA",Barilla G & R F.Lli S.P.A.,usda,16.7,20.0,25.0,10.0,71.7
+2019806,"BARILLA, PASTA, ROTINI",Barilla G & R F.Lli S.P.A.,usda,16.7,20.0,25.0,10.0,71.7
+2634359,"BARILLA, ORGANIC, PENNE PASTA",Barilla G & R F.Lli S.P.A.,usda,16.7,20.0,25.0,10.0,71.7
+2600632,"ASPARAGUS RAGU MAFALDA PASTA WITH ASPARAGUS IN A RICH RAGU SAUCE, ASPARAGUS RAGU",Conagra Frozen Foods,usda,16.7,20.0,25.0,10.0,71.7
+1896408,SAUSAGE RAGU PASTA SAUCE,TRZ Marketing,usda,16.7,20.0,25.0,10.0,71.7

@@ -1,0 +1,19 @@
+Final Project Proposal Deliverables
+For the Final Project Proposal Deliverables, please note:
+SUBMISSION REQUIREMENTS
+• Codelabs document (detailed write-up following the Codelab formatting guide)
+• Detailed Word/Google Doc covering all proposal sections
+• Video presentation — mandatory, 10 minutes, all team members must present
+• All of the same deliverables need to be in a separate GitHub Repository along with any additional POC/prototyping files 
+Suggestions and recommendations for a strong proposal
+Multiple architecture ideas — prototype and brainstorm with more than one option and justify your final choice
+Tool selection rationale — explain why each tool/technology was chosen over alternatives
+Dataset details — clearly identify datasets you’ll work with, expected volume, and initial EDA/analysis
+Data-heavy focus — your project must be heavy on data collection and processing; this is a core requirement
+Strategy explanation — articulate how your solution addresses a relevant real-world problem
+Timelines — a clear phase-by-phase timeline with milestones must be included
+Basic prototyping — a working prototype or POC for your data pipeline/collection can be demonstrated and saved in the git repo
+Application scalability — the user-facing application must be designed with scalability in mind
+GitHub Kanban boards - For issue tracking and planning
+IMPORTANT NOTE
+• Feedback on proposals will be course corrections and refinements — not requests to change your idea entirely. Come prepared with a well-thought-out plan.
